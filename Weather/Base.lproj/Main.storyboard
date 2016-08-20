@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2a-3e-brY">
+                                <rect key="frame" x="180" y="345" width="240" height="30"/>
+                                <color key="backgroundColor" red="0.97464529639999997" green="0.86241741459999999" blue="0.028157259109999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8p8-X2-7la"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rl-bg-1o7">
+                                <rect key="frame" x="180" y="221" width="240" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tqS-Vh-Qau">
+                                <rect key="frame" x="180" y="285" width="240" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tqS-Vh-Qau" firstAttribute="top" secondItem="2rl-bg-1o7" secondAttribute="bottom" constant="43" id="2T0-io-F2t"/>
+                            <constraint firstItem="tqS-Vh-Qau" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BQ3-Kb-gaQ"/>
+                            <constraint firstItem="tqS-Vh-Qau" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EeT-Gy-Fwv"/>
+                            <constraint firstAttribute="trailing" secondItem="tqS-Vh-Qau" secondAttribute="trailing" constant="180" id="PSO-TX-3pn"/>
+                            <constraint firstItem="m2a-3e-brY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="180" id="Prl-oj-o5M"/>
+                            <constraint firstItem="tqS-Vh-Qau" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="180" id="Y7J-aH-lHA"/>
+                            <constraint firstAttribute="trailing" secondItem="2rl-bg-1o7" secondAttribute="trailing" constant="180" id="gGD-3m-Gpq"/>
+                            <constraint firstItem="2rl-bg-1o7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="180" id="ksp-zU-WmS"/>
+                            <constraint firstAttribute="trailing" secondItem="m2a-3e-brY" secondAttribute="trailing" constant="180" id="mTV-Xq-ky4"/>
+                            <constraint firstItem="m2a-3e-brY" firstAttribute="top" secondItem="tqS-Vh-Qau" secondAttribute="bottom" constant="30" id="vW0-Ei-c0S"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="LocationLabel" destination="2rl-bg-1o7" id="W4F-AF-CVa"/>
+                        <outlet property="userEnteredLocationTextField" destination="tqS-Vh-Qau" id="kNg-A1-Ceg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="312"/>
+        </scene>
+    </scenes>
+</document>

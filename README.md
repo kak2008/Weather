@@ -1,5 +1,6 @@
 # Weather
 
+Weather is an iOS weather application developed in Swift 2.0.  
 
 
 ## Requirements

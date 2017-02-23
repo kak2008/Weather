@@ -11,24 +11,25 @@ import UIKit
 class ApiClient: NSObject
 {
     //key : 9f73de1c0bf34317f0cb5c26da477c94
+    let ApiKey = "9f73de1c0bf34317f0cb5c26da477c94"
 
-    func getWeatherData(location: String, failure: (errorMessage: String) -> Void, success: () -> Void)
+    func getWeatherData(_ location: String, failure: (_ errorMessage: String) -> Void, success: @escaping () -> Void)
     {
         // URL Request creation
-        let urlString = "http://api.openweathermap.org/data/2.5/forecast?q=London,us&mode=json&appid=9f73de1c0bf34317f0cb5c26da477c94"
-        let url = NSURL(string: urlString)
+        let urlString = "http://api.openweathermap.org/data/2.5/forecast?q=\(location)&mode=json&appid=\(ApiKey)"
+        let url = URL(string: urlString)
         
         // URL Request Session
-        let conf = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let conf = URLSessionConfiguration.default
         
-        let session = NSURLSession(configuration: conf)
+        let session = URLSession(configuration: conf)
 
-        let task = session.dataTaskWithURL(url!) { (data, response, error) in
+        let task = session.dataTask(with: url!, completionHandler: { (data, response, error) in
            
             // error handling
             if error != nil
             {
-                print(error)
+                print(error as Any)
                 // ToDo:- create Alert with error
                 return
             }
@@ -36,8 +37,9 @@ class ApiClient: NSObject
             
             do {
                 // Data conversion: NSData to Json
-                let receivedData = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSDictionary
-                print(receivedData)
+                let receivedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! NSDictionary
+                
+                WeatherData.sharedData.updateCityData(receivedData)
                 success()
             }
             catch let error1 as NSError
@@ -47,7 +49,7 @@ class ApiClient: NSObject
             
                 print(error1)
             }
-        }
+        }) 
         task.resume()
     }
 }

@@ -54,7 +54,7 @@
                                 </visualEffectView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.40000000000000002" contentMode="center" reuseIdentifier="weatherCell" id="DIg-UM-OfF" customClass="WeatherCell" customModule="Weather" customModuleProvider="target">
-                                        <rect key="frame" x="-112.5" y="0.0" width="600" height="580"/>
+                                        <rect key="frame" x="-113" y="0.0" width="600" height="580"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
@@ -312,48 +312,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddCity-Search" translatesAutoresizingMaskIntoConstraints="NO" id="BzI-S5-3x4">
-                                <rect key="frame" x="0.0" y="64" width="30" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQr-5z-Hdp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City, Zip code, or airport location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qL5-Fo-9tn" customClass="AddCityTextField" customModule="Weather" customModuleProvider="target">
+                                        <rect key="frame" x="16.5" y="0.0" width="341.5" height="30"/>
+                                        <color key="textColor" red="0.056684094231552185" green="0.71779973094520022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="fieldImage" value="AddCity-Search"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="mlP-0p-D4N" id="oGJ-q8-338"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="TvP-Cd-GQv"/>
-                                    <constraint firstAttribute="height" constant="30" id="nxd-If-C44"/>
+                                    <constraint firstItem="qL5-Fo-9tn" firstAttribute="centerX" secondItem="vQr-5z-Hdp" secondAttribute="centerX" constant="-0.5" id="1E8-nM-byb"/>
+                                    <constraint firstItem="qL5-Fo-9tn" firstAttribute="centerY" secondItem="vQr-5z-Hdp" secondAttribute="centerY" id="glA-lR-jfr"/>
                                 </constraints>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City, zip code, or airport location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AeM-yd-0Dy">
-                                <rect key="frame" x="30" y="64" width="250" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="hjO-tQ-eY6"/>
-                                    <constraint firstAttribute="width" constant="250" id="lcH-8C-6YM"/>
-                                    <constraint firstAttribute="height" constant="30" id="zLP-9P-MeL"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUq-J3-v23">
-                                <rect key="frame" x="280" y="64" width="95" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FUq-J3-v23" firstAttribute="leading" secondItem="AeM-yd-0Dy" secondAttribute="trailing" id="3Ua-cy-snd"/>
-                            <constraint firstItem="AeM-yd-0Dy" firstAttribute="top" secondItem="FUq-J3-v23" secondAttribute="top" id="9Zh-U5-zsd"/>
-                            <constraint firstItem="9N3-Uh-aua" firstAttribute="top" secondItem="AeM-yd-0Dy" secondAttribute="bottom" constant="529" id="HpZ-X6-e3O"/>
-                            <constraint firstItem="AeM-yd-0Dy" firstAttribute="top" secondItem="BzI-S5-3x4" secondAttribute="top" id="R1Q-lE-J8S"/>
-                            <constraint firstItem="9N3-Uh-aua" firstAttribute="top" secondItem="FUq-J3-v23" secondAttribute="bottom" constant="529" id="U0a-DP-YNX"/>
-                            <constraint firstItem="AeM-yd-0Dy" firstAttribute="leading" secondItem="BzI-S5-3x4" secondAttribute="trailing" id="cc2-gn-E72"/>
-                            <constraint firstAttribute="trailing" secondItem="FUq-J3-v23" secondAttribute="trailing" id="fTl-Xt-5VI"/>
-                            <constraint firstItem="AeM-yd-0Dy" firstAttribute="top" secondItem="eSl-ir-zMe" secondAttribute="bottom" id="kmv-Ug-kHo"/>
-                            <constraint firstItem="BzI-S5-3x4" firstAttribute="leading" secondItem="5l6-Q7-E3i" secondAttribute="leading" id="odS-FF-NhT"/>
-                            <constraint firstItem="FUq-J3-v23" firstAttribute="top" secondItem="eSl-ir-zMe" secondAttribute="bottom" id="qVv-Du-mia"/>
-                            <constraint firstItem="AeM-yd-0Dy" firstAttribute="leading" secondItem="BzI-S5-3x4" secondAttribute="trailing" id="r1M-hk-hut"/>
-                            <constraint firstItem="BzI-S5-3x4" firstAttribute="top" secondItem="eSl-ir-zMe" secondAttribute="bottom" id="tGR-n0-loe"/>
-                            <constraint firstItem="9N3-Uh-aua" firstAttribute="top" secondItem="BzI-S5-3x4" secondAttribute="bottom" constant="529" id="yWw-kq-Fc2"/>
+                            <constraint firstItem="vQr-5z-Hdp" firstAttribute="leading" secondItem="5l6-Q7-E3i" secondAttribute="leading" id="FAX-UN-j1c"/>
+                            <constraint firstItem="9N3-Uh-aua" firstAttribute="top" secondItem="vQr-5z-Hdp" secondAttribute="bottom" constant="529" id="Sha-u9-tts"/>
+                            <constraint firstAttribute="trailing" secondItem="vQr-5z-Hdp" secondAttribute="trailing" id="bCB-XP-Yne"/>
+                            <constraint firstItem="vQr-5z-Hdp" firstAttribute="top" secondItem="eSl-ir-zMe" secondAttribute="bottom" id="zvi-ln-3WB"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="qL5-Fo-9tn" id="LuN-s1-j5O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deV-5X-8Yr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

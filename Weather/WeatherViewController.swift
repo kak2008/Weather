@@ -21,6 +21,10 @@ class WeatherViewController: UIViewController, UICollectionViewDataSource, UICol
         weatherCollectionView.dataSource = self
         weatherCollectionView.delegate = self
         
+//        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+//        backgroundImage.image = UIImage(named: "Weather-Image")
+//        self.view.insertSubview(backgroundImage, at: 0)
+        
         getWeatherDataCalling()
     }
 
@@ -29,7 +33,7 @@ class WeatherViewController: UIViewController, UICollectionViewDataSource, UICol
     func getWeatherDataCalling() -> Void
     {
         let apiObj = ApiClient()
-        apiObj.getWeatherData("Hyderabad", failure: { (errorMessage) in
+        apiObj.getWeatherData("NewYork", failure: { (errorMessage) in
             // Failure Case
             // error handling
             // print error
@@ -62,11 +66,13 @@ class WeatherViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let city = WeatherData.sharedData.listOfCities[(indexPath as NSIndexPath).item];
-
+    
         let cell: WeatherCell = collectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCell
         
         cell.cityLabel.text = city.name
         cell.weatherDescriptionLabel.text = city.weatherList[0].description
+        cell.tempLabel.text = "45"
+        
         
         return cell
     }

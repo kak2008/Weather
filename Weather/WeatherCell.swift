@@ -13,4 +13,5 @@ class WeatherCell: UICollectionViewCell {
     @IBOutlet weak var cityLabel: UILabel!
     
     @IBOutlet weak var weatherDescriptionLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
 }

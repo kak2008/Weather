@@ -54,7 +54,7 @@
                                 </visualEffectView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.40000000000000002" contentMode="center" reuseIdentifier="weatherCell" id="DIg-UM-OfF" customClass="WeatherCell" customModule="Weather" customModuleProvider="target">
-                                        <rect key="frame" x="-113" y="0.0" width="600" height="580"/>
+                                        <rect key="frame" x="-112.5" y="0.0" width="600" height="580"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
@@ -154,6 +154,51 @@
             </objects>
             <point key="canvasLocation" x="320.80000000000001" y="316.19190404797604"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="xFM-xI-lGf">
+            <objects>
+                <viewController id="feK-Se-T9q" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YZF-C0-uOp"/>
+                        <viewControllerLayoutGuide type="bottom" id="bPY-Bt-yaS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h2M-5w-hsC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f27-qR-dkF">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zew-WZ-OFx">
+                                <rect key="frame" x="0.0" y="105" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="feK-Se-T9q" id="qNj-XN-Lyu"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="wop-DS-Xyd" id="5Va-Fx-LL5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a3u-8L-Xl4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="wop-DS-Xyd">
+                    <connections>
+                        <outlet property="delegate" destination="feK-Se-T9q" id="Ef8-Du-bG9"/>
+                        <outlet property="searchBar" destination="zew-WZ-OFx" id="IV3-yF-myw"/>
+                        <outlet property="searchContentsController" destination="feK-Se-T9q" id="1HP-pP-oVb"/>
+                        <outlet property="searchResultsDataSource" destination="feK-Se-T9q" id="FPP-eZ-4am"/>
+                        <outlet property="searchResultsDelegate" destination="feK-Se-T9q" id="42u-hO-9WC"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1446" y="377"/>
+        </scene>
         <!--Weather-->
         <scene sceneID="mC4-nf-Hbc">
             <objects>
@@ -187,7 +232,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ang-2B-KKx" id="ybj-8P-d1d">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lk1-M0-1Pu">
@@ -290,7 +335,7 @@
                     <navigationItem key="navigationItem" title="Weather" id="67a-vT-2pC">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="3Pv-6K-8nx">
                             <connections>
-                                <segue destination="mlP-0p-D4N" kind="show" id="cfd-Lb-hTx"/>
+                                <segue destination="SSY-Xj-GBl" kind="show" id="x7F-r5-Xuv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="geE-ZK-1mn"/>
@@ -313,10 +358,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQr-5z-Hdp">
-                                <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="40" width="375" height="54"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City, Zip code, or airport location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qL5-Fo-9tn" customClass="AddCityTextField" customModule="Weather" customModuleProvider="target">
-                                        <rect key="frame" x="16.5" y="0.0" width="341.5" height="30"/>
+                                        <rect key="frame" x="16.5" y="12" width="341.5" height="30"/>
                                         <color key="textColor" red="0.056684094231552185" green="0.71779973094520022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
@@ -342,7 +387,7 @@
                             <constraint firstItem="vQr-5z-Hdp" firstAttribute="leading" secondItem="5l6-Q7-E3i" secondAttribute="leading" id="FAX-UN-j1c"/>
                             <constraint firstItem="9N3-Uh-aua" firstAttribute="top" secondItem="vQr-5z-Hdp" secondAttribute="bottom" constant="529" id="Sha-u9-tts"/>
                             <constraint firstAttribute="trailing" secondItem="vQr-5z-Hdp" secondAttribute="trailing" id="bCB-XP-Yne"/>
-                            <constraint firstItem="vQr-5z-Hdp" firstAttribute="top" secondItem="eSl-ir-zMe" secondAttribute="bottom" id="zvi-ln-3WB"/>
+                            <constraint firstItem="vQr-5z-Hdp" firstAttribute="top" secondItem="eSl-ir-zMe" secondAttribute="bottom" constant="20" id="uVp-Al-PU5"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -353,7 +398,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deV-5X-8Yr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4384.8000000000002" y="107.49625187406298"/>
+            <point key="canvasLocation" x="3758" y="958"/>
+        </scene>
+        <!--Search Location Table View Controller-->
+        <scene sceneID="tHH-5X-qdR">
+            <objects>
+                <tableViewController id="SSY-Xj-GBl" customClass="SearchLocationTableViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="PDz-Qv-rs3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter City, Zip code, or airport location" id="Svu-O9-va0">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="SSY-Xj-GBl" id="GCM-Wz-3SF"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addCityTableViewCell" id="i1k-Hv-MEg">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i1k-Hv-MEg" id="cO2-VO-KuO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="SSY-Xj-GBl" id="OtB-Md-0Al"/>
+                            <outlet property="delegate" destination="SSY-Xj-GBl" id="hVY-4p-sdb"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="searchTableView" destination="PDz-Qv-rs3" id="FVy-nv-pUu"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CHn-Xa-y38" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4271" y="108"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="rFq-HK-k9B">
@@ -375,18 +459,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6KA-Y2-eer" id="686-DG-2Zk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8MS-Eh-zVq">
-                                                    <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                                    <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v2a-e1-IZe">
-                                                    <rect key="frame" x="15" y="25" width="41" height="14"/>
+                                                    <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

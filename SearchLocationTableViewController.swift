@@ -66,7 +66,13 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(filteredLocations[indexPath.row].location)
+    }
  
+    // MARK: - Search Methods
+
     func updateSearchResults(for searchController: UISearchController) {
         searchForLocationWithSearchText(searchText: searchController.searchBar.text!, scope: "All")
     }

@@ -25,7 +25,6 @@
 		F8EEBA1F1D6798AC00DCA6F6 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EEBA1E1D6798AC00DCA6F6 /* WeatherTests.swift */; };
 		F8EEBA2A1D6798AD00DCA6F6 /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EEBA291D6798AD00DCA6F6 /* WeatherUITests.swift */; };
 		F8EEBA3E1D67998900DCA6F6 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EEBA3D1D67998900DCA6F6 /* ApiClient.swift */; };
-		F8F049641E634748009C9FE2 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F049631E634748009C9FE2 /* LocationSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +69,6 @@
 		F8EEBA291D6798AD00DCA6F6 /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		F8EEBA2B1D6798AD00DCA6F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8EEBA3D1D67998900DCA6F6 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		F8F049631E634748009C9FE2 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +135,6 @@
 		F8EEBA051D6798AC00DCA6F6 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				F8F049651E634757009C9FE2 /* SearchController */,
 				F8EEBA3C1D67995800DCA6F6 /* ApiClient */,
 				F8EEBA371D6798B200DCA6F6 /* App Delegate */,
 				F8EEBA3B1D6798E200DCA6F6 /* CoreData */,
@@ -223,14 +220,6 @@
 				F8EEBA3D1D67998900DCA6F6 /* ApiClient.swift */,
 			);
 			name = ApiClient;
-			sourceTree = "<group>";
-		};
-		F8F049651E634757009C9FE2 /* SearchController */ = {
-			isa = PBXGroup;
-			children = (
-				F8F049631E634748009C9FE2 /* LocationSearchViewController.swift */,
-			);
-			name = SearchController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,7 +360,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8EEBA0F1D6798AC00DCA6F6 /* Weather.xcdatamodeld in Sources */,
-				F8F049641E634748009C9FE2 /* LocationSearchViewController.swift in Sources */,
 				F832A12D1E62610B005FE127 /* CityTableViewCell.swift in Sources */,
 				F832A1321E6272E0005FE127 /* WeatherDescription.swift in Sources */,
 				F832A12B1E6260B4005FE127 /* CitiesTableViewController.swift in Sources */,

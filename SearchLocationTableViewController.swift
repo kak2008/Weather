@@ -14,7 +14,6 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
     var currentLocations = [Locations]()
     var filteredLocations = [Locations]()
     let searchController = UISearchController(searchResultsController: nil)
-
     
     // MARK: - IBOutlets
     @IBOutlet var searchTableView: UITableView!
@@ -23,12 +22,18 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        currentLocations = [Locations(location: "Hyderabad"),
-                            Locations(location: "Mumbai"),
-                            Locations(location: "Delhi"),
-                            Locations(location: "Chennai"),
-                            Locations(location: "Banglore"),
-                            Locations(location: "Ahmedhabad")]
+        currentLocations =
+            [Locations(location: "Hyderabad"),
+             Locations(location: "Mumbai"),
+             Locations(location: "Delhi"),
+             Locations(location: "Chennai"),
+             Locations(location: "Banglore"),
+             Locations(location: "Ahmedhabad"),
+             Locations(location: "Kanpur"),
+             Locations(location: "Vijayawada"),
+             Locations(location: "Karimnagar"),
+             Locations(location: "Simla"),
+             Locations(location: "Kolkata")]
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false

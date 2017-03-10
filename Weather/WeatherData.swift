@@ -11,6 +11,8 @@ import Foundation
 class WeatherData: NSObject {
     static let sharedData = WeatherData()
     var listOfCities = Array<City>()
+    var weatherList = Array<Weather>()
+
     
     func updateCityData(_ json: NSDictionary) {
         
@@ -24,7 +26,6 @@ class WeatherData: NSObject {
             return
         }
         
-        var weatherList = Array<Weather>()
         
         for item in list {
             //let weatherDetails = (item["weather"]! as! NSArray)

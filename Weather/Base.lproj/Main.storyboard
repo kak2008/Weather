@@ -172,6 +172,9 @@
                                         <segment title="°C"/>
                                         <segment title="°F"/>
                                     </segments>
+                                    <connections>
+                                        <action selector="tempConversionButtonPressed:" destination="WIE-v3-fcc" eventType="valueChanged" id="isF-6b-UkR"/>
+                                    </connections>
                                 </segmentedControl>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -314,11 +317,6 @@
                             <connections>
                                 <outlet property="delegate" destination="SSY-Xj-GBl" id="GCM-Wz-3SF"/>
                             </connections>
-                        </searchBar>
-                        <searchBar key="tableFooterView" contentMode="redraw" id="EYo-Wl-WKm">
-                            <rect key="frame" x="0.0" y="603" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addCityTableViewCell" id="i1k-Hv-MEg">

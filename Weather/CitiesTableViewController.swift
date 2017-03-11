@@ -9,7 +9,12 @@
 import UIKit
 
 class CitiesTableViewController: UITableViewController {
+
+    // MARK: - Properties
+    var tempUnit: String = "Celsius"
+    var citiesList: Array = ["Hyderabad","Reston","Mumbai","Toronto","katmandu"]
     
+    // MARK: - View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -21,15 +26,44 @@ class CitiesTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Helper Methods
     func getWeatherDataCalling() -> Void
     {
-        let apiObj = ApiClient()
-        apiObj.getWeatherData("Michigan", failure: { (errorMessage) in
-        }) {
-            DispatchQueue.main.async(execute: {
-                self.tableView.reloadData()
-            })
-
+        for item in citiesList {
+            let apiObj = ApiClient()
+            print(item)
+            apiObj.getWeatherData("\(item)", failure: { (errorMessage) in
+            }) {
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
+            }
+        }
+    }
+    
+    func convertTempUnits(temp: Double, conversionType: String) -> Double {
+        switch conversionType {
+        case TempUnits.Celsius: return (temp - 273.15)
+        case TempUnits.Fahrenheit: return ((temp - 273.15) * 9/5 ) + 32
+        default: return temp
+        }
+    }
+    
+    func convertDecimalToString(temp: Double) -> String {
+        let tempValue = "\(temp)"
+        let splitValue = tempValue.characters.split(separator: ".")
+        return String(splitValue.first!)
+    }
+    
+    // MARK: - IBActions
+    @IBAction func tempConversionButtonPressed(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            tempUnit = "Celsius"
+            tableView.reloadData()
+        }
+        else {
+            tempUnit = "Fahrenheit"
+            tableView.reloadData()
         }
     }
 
@@ -45,7 +79,7 @@ class CitiesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as! CityTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cityTableViewCell, for: indexPath) as! CityTableViewCell
         
         var cities = WeatherData.sharedData.listOfCities
         var weatherInfo = WeatherData.sharedData.weatherList
@@ -54,27 +88,14 @@ class CitiesTableViewController: UITableViewController {
         let weatherObj = weatherInfo[indexPath.row]
         
         cell.cityTimeLabel.text = "07:12 PM"
-        cell.cityNamelabel.text = "\(cityObj.country)"
+        cell.cityNamelabel.text = "\(citiesList[indexPath.row]), \(cityObj.country)"
         cell.cityWeatherDescriptionLabel.text = "\(weatherObj.description)"
         
-        let convertedTemp = convertTempUnits(temp: weatherObj.temperature, conversionType: "Celsius")
+        let convertedTemp = convertTempUnits(temp: weatherObj.temperature, conversionType: "\(tempUnit)")
         let tempValue = convertDecimalToString(temp: convertedTemp)
-        cell.cityWeatherTempLabel.text = NSString(format: "\(tempValue)%@" as NSString, "\u{00b0}") as String
+        cell.cityWeatherTempLabel.text = NSString(format: "\(tempValue)%@" as NSString, UISymbols.tempDegreeSymbol) as String
        
         return cell
     }
-    
-    func convertTempUnits(temp: Double, conversionType: String) -> Double {
-        switch conversionType {
-        case "Celsius": return (temp - 273.15)
-        case "Fahrenheit": return ((temp - 273.15) * 9/5 ) + 32
-        default: return temp
-        }
-    }
-    
-    func convertDecimalToString(temp: Double) -> String {
-        let tempValue = "\(temp)"
-        let splitValue = tempValue.characters.split(separator: ".")
-        return String(splitValue.first!)
-    }
+
 }

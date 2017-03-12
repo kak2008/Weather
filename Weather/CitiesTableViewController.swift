@@ -8,11 +8,12 @@
 
 import UIKit
 
-class CitiesTableViewController: UITableViewController {
+class CitiesTableViewController: UITableViewController, SelectedCityDelegate {
 
     // MARK: - Properties
     var tempUnit: String = TempUnits.Celsius
     var citiesList: Array = ["Hyderabad","Reston","Mumbai","Toronto","katmandu"]
+    var receivedCityName: String!
     
     // MARK: - View Life Cycle Methods
     override func viewDidLoad() {
@@ -35,7 +36,7 @@ class CitiesTableViewController: UITableViewController {
             apiObj.getWeatherData("\(item)", failure: { (errorMessage) in
             }) {
                 DispatchQueue.main.async(execute: {
-                    self.tableView.reloadData()
+                    self.reloadTableView()
                 })
             }
         }
@@ -55,16 +56,27 @@ class CitiesTableViewController: UITableViewController {
         return String(splitValue.first!)
     }
     
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+    
+    // MARK: - Delegate Methods
+    func addSelectedCity(selectedCity: String) {
+        receivedCityName = selectedCity
+        citiesList.append(receivedCityName)
+        getWeatherDataCalling()
+    }
+
+    
     // MARK: - IBActions
     @IBAction func tempConversionButtonPressed(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             tempUnit = TempUnits.Celsius
-            tableView.reloadData()
         }
         else {
             tempUnit = TempUnits.Fahrenheit
-            tableView.reloadData()
         }
+        reloadTableView()
     }
 
     // MARK: - Table View Methods
@@ -98,4 +110,9 @@ class CitiesTableViewController: UITableViewController {
         return cell
     }
 
+    // MARK: - Segue Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! SearchLocationTableViewController
+        destinationVC.selectedCityDelegate = self
+    }
 }

@@ -14,7 +14,8 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
     var currentLocations = [Locations]()
     var filteredLocations = [Locations]()
     let searchController = UISearchController(searchResultsController: nil)
-    var selectedCity: String!
+    var selectedCityName: String!
+    var selectedCityDelegate:SelectedCityDelegate?
     
     // MARK: - IBOutlets
     @IBOutlet var searchTableView: UITableView!
@@ -68,8 +69,8 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCity = filteredLocations[indexPath.row].location
-        print(selectedCity)
+        selectedCityName = filteredLocations[indexPath.row].location
+        self.selectedCityDelegate?.addSelectedCity(selectedCity: selectedCityName)
         _ = navigationController?.popViewController(animated: true)
     }
  
@@ -89,6 +90,6 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
             })
         }
         tableView.reloadData()
-    }
+    }    
 
 }

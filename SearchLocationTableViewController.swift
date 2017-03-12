@@ -23,7 +23,7 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
     // MARK: - View Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Add City"
+        self.title = Constants.AddCityTitle
         currentLocations =
             [Locations(location: "Hyderabad"),
              Locations(location: "Mumbai"),
@@ -37,12 +37,11 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
              Locations(location: "Simla"),
              Locations(location: "Kolkata")]
         
-        searchController.searchBar.placeholder = "Enter City, Zip code, or airport location"
+        searchController.searchBar.placeholder = Constants.searchPlaceholderText
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
- 
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,7 +62,7 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addCityTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.addCityTableViewCell, for: indexPath)
 
         // Configure the cell...
         cell.textLabel?.text = filteredLocations[indexPath.row].location
@@ -80,10 +79,10 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
     // MARK: - Search Methods
 
     func updateSearchResults(for searchController: UISearchController) {
-        searchForLocationWithSearchText(searchText: searchController.searchBar.text!, scope: "All")
+        searchForLocationWithSearchText(searchText: searchController.searchBar.text!)
     }
     
-    func searchForLocationWithSearchText(searchText: String, scope: String) {
+    func searchForLocationWithSearchText(searchText: String) {
         if searchText.isEmpty {
             filteredLocations = currentLocations
         }

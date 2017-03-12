@@ -189,7 +189,6 @@
 			children = (
 				F8D6F9EE1E6FB166008170FF /* SearchLocationTableViewController.swift */,
 				F832A12A1E6260B4005FE127 /* CitiesTableViewController.swift */,
-				F89090741DBC32C500E619DE /* WeatherCell.swift */,
 				F8EEBA081D6798AC00DCA6F6 /* WeatherViewController.swift */,
 			);
 			name = ViewController;
@@ -202,6 +201,7 @@
 				F832A1311E6272E0005FE127 /* WeatherDescription.swift */,
 				F890906E1DBC142000E619DE /* City.swift */,
 				F89090701DBC151200E619DE /* WeatherData.swift */,
+				F89090741DBC32C500E619DE /* WeatherCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

@@ -52,19 +52,16 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return filteredLocations.count    }
+        return filteredLocations.count
+    }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.addCityTableViewCell, for: indexPath)
 
-        // Configure the cell...
         cell.textLabel?.text = filteredLocations[indexPath.row].location
         
         return cell

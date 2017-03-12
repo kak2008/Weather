@@ -27,9 +27,7 @@ class WeatherData: NSObject {
         }
         
         
-        for item in list {
-            //let weatherDetails = (item["weather"]! as! NSArray)
-            
+        for item in list {            
             let weatherJsonArray = item["weather"] as! NSArray
             let weatherJson = weatherJsonArray[0] as! NSDictionary
             

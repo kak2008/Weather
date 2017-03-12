@@ -194,8 +194,8 @@
 		F8EEBA381D6798B800DCA6F6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F8D6F9EE1E6FB166008170FF /* SearchLocationTableViewController.swift */,
 				F832A12A1E6260B4005FE127 /* CitiesTableViewController.swift */,
+				F8D6F9EE1E6FB166008170FF /* SearchLocationTableViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";

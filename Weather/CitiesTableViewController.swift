@@ -11,7 +11,7 @@ import UIKit
 class CitiesTableViewController: UITableViewController {
 
     // MARK: - Properties
-    var tempUnit: String = "Celsius"
+    var tempUnit: String = TempUnits.Celsius
     var citiesList: Array = ["Hyderabad","Reston","Mumbai","Toronto","katmandu"]
     
     // MARK: - View Life Cycle Methods
@@ -58,11 +58,11 @@ class CitiesTableViewController: UITableViewController {
     // MARK: - IBActions
     @IBAction func tempConversionButtonPressed(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            tempUnit = "Celsius"
+            tempUnit = TempUnits.Celsius
             tableView.reloadData()
         }
         else {
-            tempUnit = "Fahrenheit"
+            tempUnit = TempUnits.Fahrenheit
             tableView.reloadData()
         }
     }

@@ -9,7 +9,8 @@
 import Foundation
 
 struct Constants {
-    static let someConstant = "TEST"
+    static let AddCityTitle = "Add City"
+    static let searchPlaceholderText = "Enter City, Zip code, or airport location"
 }
 
 struct UISymbols {
@@ -18,6 +19,7 @@ struct UISymbols {
 
 struct CellIdentifiers {
     static let cityTableViewCell = "cityCell"
+    static let addCityTableViewCell = "addCityTableViewCell"
 }
 
 struct TempUnits {

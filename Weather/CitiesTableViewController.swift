@@ -60,8 +60,21 @@ class CitiesTableViewController: UITableViewController, SelectedCityDelegate {
         tableView.reloadData()
     }
     
+    func showAlertWithOKAction(alertTitle: String, alertMessage: String) {
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
     // MARK: - Delegate Methods
     func addSelectedCity(selectedCity: String) {
+        for item in citiesList {
+            if(item == selectedCity) {
+                showAlertWithOKAction(alertTitle: "Error", alertMessage: "City already exists.")
+                return
+            }
+        }
         receivedCityName = selectedCity
         citiesList.append(receivedCityName)
         getWeatherDataCalling()

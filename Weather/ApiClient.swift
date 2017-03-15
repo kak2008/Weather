@@ -10,13 +10,10 @@ import UIKit
 
 class ApiClient: NSObject
 {
-    //key : 9f73de1c0bf34317f0cb5c26da477c94
-    let ApiKey = "9f73de1c0bf34317f0cb5c26da477c94"
-
     func getWeatherData(_ location: String, failure: (_ errorMessage: String) -> Void, success: @escaping () -> Void)
     {
         // URL Request creation
-        let urlString = "http://api.openweathermap.org/data/2.5/forecast?q=\(location)&mode=json&appid=\(ApiKey)"
+        let urlString = "http://api.openweathermap.org/data/2.5/forecast?q=\(location)&mode=json&appid=\(APIKeys.weatherAPIKey)"
         let url = URL(string: urlString)
         
         // URL Request Session

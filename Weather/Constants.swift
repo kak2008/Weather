@@ -13,6 +13,10 @@ struct Constants {
     static let searchPlaceholderText = "Enter City, Zip code, or airport location"
 }
 
+struct APIKeys {
+    static let weatherAPIKey = "9f73de1c0bf34317f0cb5c26da477c94"
+}
+
 struct UISymbols {
     static let tempDegreeSymbol = "\u{00b0}"
 }

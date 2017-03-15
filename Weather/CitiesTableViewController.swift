@@ -32,7 +32,6 @@ class CitiesTableViewController: UITableViewController, SelectedCityDelegate {
     {
         for item in citiesList {
             let apiObj = ApiClient()
-            print(item)
             apiObj.getWeatherData("\(item)", failure: { (errorMessage) in
             }) {
                 DispatchQueue.main.async(execute: {

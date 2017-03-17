@@ -17,6 +17,9 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
     var selectedCityName: String!
     var selectedCityDelegate:SelectedCityDelegate?
     
+    // Mark: Test Variables
+    var zipcodeText: String!
+    
     // MARK: - IBOutlets
     @IBOutlet var searchTableView: UITableView!
     @IBOutlet weak var locationSearchBar: UISearchBar!
@@ -43,12 +46,26 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+        
+        getCityWithZipcodeText()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Helper Methods
+    func getCityWithZipcodeText() {
+        zipcodeText = "201"
+        let apiObj = ApiClient()
+        apiObj.getCityWithZipcode(zipcode: zipcodeText, failure: { (errorMessage) in
+            print(errorMessage)
+        }) { 
+            print("success")
+        }
+    }
+
 
     // MARK: - Table view data source
 

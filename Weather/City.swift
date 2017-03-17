@@ -24,3 +24,10 @@ struct Weather {
     let temperature: Double
     let humidity: Double
 }
+
+struct ZipcodeCity {
+    let city: String
+    let state: String
+    let zipcode: Double
+    let country: String
+}

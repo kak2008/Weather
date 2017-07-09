@@ -4,10 +4,7 @@ Weather is an iOS weather application developed in Swift 2.0.
 
 ### Screenshots
 
-![alt tag](https://github.com/kak2008/Weather/blob/master/Screenshots/Screen%20Shot%202017-07-09%20at%2012.47.06%20PM.png)
-
-![alt tag](https://github.com/kak2008/Weather/blob/master/Screenshots/Screen%20Shot%202017-07-09%20at%2012.46.28%20PM.png)
-
+![alt tag](https://github.com/kak2008/Weather/blob/master/Screenshots/Screen%20Shot%202017-07-09%20at%201.02.47%20PM.png)
 ## Requirements
 * Xcode 7.3
 * Swift 2.0

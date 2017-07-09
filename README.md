@@ -19,7 +19,7 @@ This app has multiple view controllers:
 
 
 ## Requirements
-* Xcode 7.3
+* Xcode 8.3.2
 * Swift 3.0
 
 ## License

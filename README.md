@@ -1,13 +1,17 @@
 # Weather
 
-Weather is an iOS weather application developed in Swift 2.0.  
+Weather is an iOS weather application developed in Swift 3.0.  
+
+## Installation
+In order to run this app. Download the repository, open it on XCode, build & run.
 
 ### Screenshots
 
 ![alt tag](https://github.com/kak2008/Weather/blob/master/Screenshots/Screen%20Shot%202017-07-09%20at%201.02.47%20PM.png)
+
 ## Requirements
 * Xcode 7.3
-* Swift 2.0
+* Swift 3.0
 
 ## License
 Copyright (c) 2016 Anish Kodeboyina.

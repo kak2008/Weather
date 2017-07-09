@@ -14,12 +14,15 @@ class CitiesTableViewController: UITableViewController, SelectedCityDelegate {
     var tempUnit: String = TempUnits.Celsius
     var citiesList: Array = ["Hyderabad","Reston","Mumbai","Toronto","katmandu"]
     var receivedCityName: String!
+    var selectedIndexPath:NSInteger! = -1
+    var cellRowHeight: Double = 75
+    var expansionRowHeight: Double = 142
     
     // MARK: - View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        getWeatherDataCalling()
+        getSavedLocationsWeatherInfo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +31,10 @@ class CitiesTableViewController: UITableViewController, SelectedCityDelegate {
     }
     
     // MARK: - Helper Methods
-    func getWeatherDataCalling() -> Void
+    /**
+     Fetches current weather info/data for each saved location
+     */
+    func getSavedLocationsWeatherInfo() -> Void
     {
         for item in citiesList {
             let apiObj = ApiClient()
@@ -76,9 +82,8 @@ class CitiesTableViewController: UITableViewController, SelectedCityDelegate {
         }
         receivedCityName = selectedCity
         citiesList.append(receivedCityName)
-        getWeatherDataCalling()
+        getSavedLocationsWeatherInfo()
     }
-
     
     // MARK: - IBActions
     @IBAction func tempConversionButtonPressed(_ sender: UISegmentedControl) {
@@ -106,13 +111,13 @@ class CitiesTableViewController: UITableViewController, SelectedCityDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cityTableViewCell, for: indexPath) as! CityTableViewCell
         
         var cities = WeatherData.sharedData.listOfCities
-        var weatherInfo = WeatherData.sharedData.weatherList
+        let cityObj = cities[indexPath.row] as City
+        let weatherObj = cityObj.weatherList.first! as Weather
         
-        let cityObj = cities[indexPath.row]
-        let weatherObj = weatherInfo[indexPath.row]
-        
+        // var weatherInfo = WeatherData.sharedData.weatherList
+        print(weatherObj.date,weatherObj.timeStamp)
         cell.cityTimeLabel.text = "07:12 PM"
-        cell.cityNamelabel.text = "\(citiesList[indexPath.row]), \(cityObj.country)"
+        cell.cityNamelabel.text = "\(cityObj.name), \(cityObj.country)"
         cell.cityWeatherDescriptionLabel.text = "\(weatherObj.description)"
         
         let convertedTemp = convertTempUnits(temp: weatherObj.temperature, conversionType: "\(tempUnit)")
@@ -121,6 +126,20 @@ class CitiesTableViewController: UITableViewController, SelectedCityDelegate {
        
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndexPath = indexPath.row
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == selectedIndexPath {
+            return CGFloat(expansionRowHeight)
+        } else {
+            return CGFloat(cellRowHeight)
+        }
+    }
+    
 
     // MARK: - Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

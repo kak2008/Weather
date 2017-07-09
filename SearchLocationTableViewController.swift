@@ -57,7 +57,7 @@ class SearchLocationTableViewController: UITableViewController,UISearchResultsUp
     
     // MARK: - Helper Methods
     func getCityWithZipcodeText() {
-        zipcodeText = "201"
+        zipcodeText = "20171"
         let apiObj = ApiClient()
         apiObj.getCityWithZipcode(zipcode: zipcodeText, failure: { (errorMessage) in
             print(errorMessage)

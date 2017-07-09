@@ -11,11 +11,11 @@ import Foundation
 class WeatherData: NSObject {
     static let sharedData = WeatherData()
     var listOfCities = Array<City>()
-    var weatherList = Array<Weather>()
     var zipcodeCityList = Array<ZipcodeCity>()
-
     
     func updateCityData(_ json: NSDictionary) {
+
+        var weatherList = Array<Weather>()
         
         guard let cityJson: NSDictionary = json["city"] as? NSDictionary else {
             print("City info is not available")
@@ -28,6 +28,12 @@ class WeatherData: NSObject {
         }
         
         
+        let cityName1 = cityJson.value(forKey: "name") as! String
+        let cityCountryName = cityJson.value(forKey: "country") as! String
+        let id1 = cityJson.value(forKey: "id") as! Double
+        print(cityName1,cityCountryName, id1)
+        
+        
         for item in list {            
             let weatherJsonArray = item["weather"] as! NSArray
             let weatherJson = weatherJsonArray[0] as! NSDictionary
@@ -36,6 +42,7 @@ class WeatherData: NSObject {
             let mainJson = item["main"] as! NSDictionary
             
             let date = item["dt_txt"] as! String
+            let timeStamp = item["dt"] as! Double
             
             let icon = weatherJson["icon"] as! String
             let main = weatherJson["main"] as! String
@@ -46,15 +53,33 @@ class WeatherData: NSObject {
             let temperature = mainJson["temp"] as! Double
             let humidity = mainJson["humidity"] as! Double
             
-            let weather = Weather(date: date, icon: icon, main: main, description: description, windSpeed: windSpeed, temperature: temperature, humidity: humidity)
-            
+            let weather = Weather(date: date,
+                              timeStamp: timeStamp,
+                              icon: icon,
+                              main: main,
+                              description: description,
+                              windSpeed: windSpeed,
+                              temperature: temperature,
+                              humidity: humidity)
             weatherList.append(weather)
+
         }
         
         let cityName = cityJson["name"] as! String
         
-        if let index = listOfCities.index(where: {$0.name == cityName}) {
-            listOfCities[index].weatherList = weatherList
+        var indexOfCity = NSNotFound
+        for i in 0..<(listOfCities.count) {
+            let cityItem = listOfCities[i]
+            
+            if cityItem.name == cityName {
+                indexOfCity = i
+                break
+            }
+        }
+        
+        //if let index = listOfCities.index(where: {$0.name === cityName}) {
+        if indexOfCity != NSNotFound {
+            listOfCities[indexOfCity].weatherList = weatherList
         }
         else {
             let id = cityJson["id"] as! Int
@@ -75,50 +100,61 @@ class WeatherData: NSObject {
                 if let address = resultsDic["address_components"] as? [[String: Any]] {
                     
                     for dict in address {
+                                                
+//                        var cityResult: String?
+//                        var stateResult: String?
+//                        var stateShortNameResult: String?
+//                        var zipcodeResult: String?
+//                        var countryResult: String?
+//                        var countryShortNameResult: String?
+//                        var countyResult: String?
                         
                         if let longName = dict["long_name"] as? String,
-                            //let shortName = dict["short_name"] as? String,
+                            let shortName = dict["short_name"] as? String,
                             let types = dict["types"] as? [String] {
                             
                             if types.contains("postal_code") {
-                                
-                                print("postal_code: \(longName)")
+                                print(" ZipCode: \(longName)")
+                                print(" Zipcode SN: \(shortName)")
+                                //zipcodeResult = "\(longName)"
                             } else if types.contains("locality") {
-                                
-                                print("city: \(longName)")
+                                print(" City: \(longName)")
+                                print(" City SN: \(shortName)")
+                                //cityResult = "\(longName)"
                             } else if types.contains("administrative_area_level_2") {
-                                
-                                print("county: \(longName)")
+                                print(" County: \(longName)")
+                                print(" County SN: \(shortName)")
+                                //countyResult = "\(longName)"
                             } else if types.contains("administrative_area_level_1") {
-                                
-                                print("state: \(longName)")
+                                print(" State: \(longName)")
+                                print(" State SN: \(shortName)")
+//                                stateResult = "\(longName)"
+//                                stateShortNameResult = "\(shortName)"
                             } else if types.contains("country") {
-                                
-                                print("country: \(longName)")
+                                print(" Country: \(longName)")
+                                print(" Country SN: \(shortName)")
+
+//                                countryResult = "\(longName)"
+//                                countryShortNameResult = "\(shortName)"
                             }
+                            
+//                            if (cityResult != nil && stateResult != nil) {
+//                                let zipcodeCityResultValues = ZipcodeCity(city: cityResult!,
+//                                                                          state: stateResult!,
+//                                                                          stateShortName: stateShortNameResult!,
+//                                                                          zipcode: zipcodeResult!,
+//                                                                          country: countryResult!,
+//                                                                          countryShortName: countryShortNameResult!,
+//                                                                          county: countyResult!)
+//                                print(zipcodeCityResultValues)
+//                                zipcodeCityList.append(zipcodeCityResultValues)
+                           // }
                         }
                     }
+                    
                 }
             }
         }
-        
-        /* let recievedJson = json
-        let results = recievedJson["results"] as! Array
-        let resultsDic = results[0] as! NSDictionary
-        let address = resultsDic["address_components"] as? NSArray
-        let zipcodeDic = address?[0] as! NSDictionary
-        let cityNameDic = address?[1] as! NSDictionary
-        let countyDic = address?[2] as! NSDictionary
-        let stateDic = address?[3] as! NSDictionary
-        let countryDic = address?[4] as! NSDictionary
-        let zipcode = zipcodeDic["long_name"] as! String
-        let cityName = cityNameDic["long_name"] as! String
-        let countyName = countyDic["long_name"] as! String
-        let stateName = stateDic["long_name"] as! String
-        let stateShortName = stateDic["short_name"] as! String
-        let countryName = countryDic["long_name"] as! String
-        let countryShortName = countryDic["short_name"] as! String
-        print(zipcode,cityName,countyName,stateName,stateShortName,countryName,countryShortName) */
     }
 
 }

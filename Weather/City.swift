@@ -15,8 +15,14 @@ struct City {
     var weatherList: Array<Weather>
 }
 
+struct City1 {
+    let cityName:String
+    let CountryName:String
+}
+
 struct Weather {
     let date: String
+    let timeStamp: Double
     let icon: String
     let main: String
     let description: String
@@ -28,6 +34,9 @@ struct Weather {
 struct ZipcodeCity {
     let city: String
     let state: String
-    let zipcode: Double
+    let stateShortName: String
+    let zipcode: String
     let country: String
+    let countryShortName: String
+    let county: String
 }

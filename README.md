@@ -9,6 +9,15 @@ In order to run this app. Download the repository, open it on XCode, build & run
 
 ![alt tag](https://github.com/kak2008/Weather/blob/master/Screenshots/Screen%20Shot%202017-07-09%20at%201.02.47%20PM.png)
 
+### Implementation
+This app has multiple view controllers:
+- __Weather List View Controller__: - This view controller allows user to see the weather details of the pre selected locations.  
+
+- __Location Search List View Controller__: - This view controller will allow user to search the weather Locations and add them to the list of selected locations.  
+
+- Application uses UIKit, Weather API.
+
+
 ## Requirements
 * Xcode 7.3
 * Swift 3.0
